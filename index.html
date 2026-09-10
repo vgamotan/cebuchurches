@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cebu Churches — Parish &amp; Mass Schedule Directory</title>
+<meta name="description" content="Find Catholic churches, parishes, and shrines across Metro Cebu — locations, priests, Facebook pages, and Mass schedules in one place.">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="#top">
+      <img src="assets/logo.svg" alt="Cebu Churches seal logo">
+      <span class="brand-text">
+        <strong>Cebu Churches</strong>
+        <span>Directory &amp; Mass Schedules</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="#directory">Directory</a>
+      <a href="#about">About this project</a>
+      <a href="#submit">Submit a correction</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <div>
+      <h1>Every parish, in one place —<br><em>sugbo simbahan.</em></h1>
+      <p class="lede">A growing directory of Catholic churches across Cebu — where they are, who serves them, and when Mass is said. Phase 1 covers Metro Cebu: Cebu City, Mandaue City, and Lapu-Lapu City.</p>
+      <div class="hero-stats">
+        <div><strong id="statTotal">0</strong><span>Churches listed</span></div>
+        <div><strong>3</strong><span>Cities, Phase 1</span></div>
+        <div><strong>1595</strong><span>Faith since</span></div>
+      </div>
+    </div>
+    <div class="hero-seal"><img src="assets/logo.svg" alt=""></div>
+  </div>
+</section>
+
+<div class="finder" id="directory">
+  <div class="container">
+    <input type="search" id="searchInput" placeholder="Search by church name, patron saint, or barangay…" aria-label="Search churches">
+    <div class="tabs" id="cityTabs" role="tablist" aria-label="Filter by city"></div>
+  </div>
+</div>
+
+<div class="container">
+  <p class="results-bar" id="resultsBar"></p>
+  <div class="grid" id="cardGrid"></div>
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <h3>No churches match that search</h3>
+    <p>Try a different spelling, or clear the filter and browse by city instead.</p>
+  </div>
+</div>
+
+<section class="section alt" id="about">
+  <div class="container two-col">
+    <div>
+      <h2>About this directory</h2>
+      <p>Cebu Churches is being built as a free public reference for parishioners, visitors, and pilgrims — a single place to look up a church's location, its assigned priest, its official Facebook page, and its Mass schedule, instead of hunting across dozens of scattered posts and outdated blogs.</p>
+      <p>This is <strong>Phase 1</strong>: the parishes, shrines, and chapels of Cebu City, Mandaue City, and Lapu-Lapu City. Later phases will extend coverage to the rest of Cebu Province — Talisay, Naga, Carcar, the northern towns, Bantayan, and Camotes.</p>
+    </div>
+    <div>
+      <h2 id="submit">Help us keep it accurate</h2>
+      <p>Parish details — especially the assigned priest, Facebook page, and Mass times — change more often than any directory can track alone. Fields marked <span class="unconfirmed" style="font-style:italic;color:#9a8f7b;">"being verified"</span> are ones we haven't independently confirmed yet.</p>
+      <p>If you're a parish secretary, priest, or parishioner and can help confirm or correct a listing, we'd welcome it — this directory is meant to be maintained with the community it serves, not built once and left to go stale.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <strong>Cebu Churches</strong> · cebuchurches.com<br>
+      <span class="footer-note">An independent, community-oriented directory. Not an official publication of the Archdiocese of Cebu. Mass schedules can change without notice — please confirm directly with the parish for important occasions.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="detailName">
+  <div class="detail" id="detailPanel"></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">Cebu Churches seal logo</title>
+  <defs>
+    <path id="ringTextTop" d="M 40,150 A 110,110 0 0 1 260,150" />
+    <radialGradient id="goldField" cx="50%" cy="42%" r="65%">
+      <stop offset="0%" stop-color="#FBDD6B"/>
+      <stop offset="55%" stop-color="#F2B705"/>
+      <stop offset="100%" stop-color="#D99A00"/>
+    </radialGradient>
+    <linearGradient id="towerShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8f1524"/>
+      <stop offset="100%" stop-color="#A6192E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- outer black disc -->
+  <circle cx="150" cy="150" r="148" fill="#141110"/>
+
+  <!-- checkerboard ring (dashed double-circle trick) -->
+  <circle cx="150" cy="150" r="132" fill="none" stroke="#FFFFFF" stroke-width="20"/>
+  <circle cx="150" cy="150" r="132" fill="none" stroke="#141110" stroke-width="20"
+          stroke-dasharray="17.28 17.28" stroke-dashoffset="0"/>
+
+  <!-- inner black ring separators -->
+  <circle cx="150" cy="150" r="122" fill="none" stroke="#141110" stroke-width="3"/>
+  <circle cx="150" cy="150" r="142" fill="none" stroke="#141110" stroke-width="3"/>
+
+  <!-- arced titles -->
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="700" letter-spacing="2" fill="#FFFFFF">
+    <textPath href="#ringTextTop" startOffset="50%" text-anchor="middle">CEBU CHURCHES</textPath>
+  </text>
+
+
+  <!-- gold inner field -->
+  <circle cx="150" cy="150" r="108" fill="url(#goldField)" stroke="#141110" stroke-width="3"/>
+
+  <!-- red sky arch behind tower -->
+  <path d="M 62,150 A 88,88 0 0 1 238,150 L 238,158 A 88,88 0 0 0 62,158 Z" fill="url(#towerShade)"/>
+
+  <!-- twin stars either side, echoing the civic seal -->
+  <g fill="#141110">
+    <path d="M78,120 l3.6,7.4 8.1,1.2 -5.9,5.7 1.4,8.1 -7.2,-3.8 -7.2,3.8 1.4,-8.1 -5.9,-5.7 8.1,-1.2 Z"/>
+    <path d="M222,120 l3.6,7.4 8.1,1.2 -5.9,5.7 1.4,8.1 -7.2,-3.8 -7.2,3.8 1.4,-8.1 -5.9,-5.7 8.1,-1.2 Z"/>
+  </g>
+
+  <!-- bell-tower / church emblem -->
+  <g transform="translate(150,178)">
+    <!-- base steps -->
+    <rect x="-46" y="46" width="92" height="9" fill="#141110"/>
+    <rect x="-40" y="37" width="80" height="9" fill="#141110"/>
+
+    <!-- main tower body, checkered like the Cebu seal -->
+    <rect x="-30" y="-38" width="60" height="75" fill="#FFFFFF" stroke="#141110" stroke-width="2.5"/>
+    <g fill="#141110">
+      <rect x="-30" y="-38" width="12" height="12"/>
+      <rect x="-6" y="-38" width="12" height="12"/>
+      <rect x="18" y="-38" width="12" height="12"/>
+      <rect x="-18" y="-26" width="12" height="12"/>
+      <rect x="6" y="-26" width="12" height="12"/>
+      <rect x="-30" y="-14" width="12" height="12"/>
+      <rect x="-6" y="-14" width="12" height="12"/>
+      <rect x="18" y="-14" width="12" height="12"/>
+      <rect x="-18" y="-2" width="12" height="12"/>
+      <rect x="6" y="-2" width="12" height="12"/>
+    </g>
+
+    <!-- arched doorway -->
+    <path d="M -9,37 L -9,17 A 9,9 0 0 1 9,17 L 9,37 Z" fill="#A6192E" stroke="#141110" stroke-width="2"/>
+
+    <!-- red tiled roof -->
+    <path d="M -38,-38 L 0,-64 L 38,-38 Z" fill="url(#towerShade)" stroke="#141110" stroke-width="2.5"/>
+    <rect x="-38" y="-40" width="76" height="6" fill="#141110"/>
+
+    <!-- cross finial -->
+    <rect x="-2.4" y="-86" width="4.8" height="24" fill="#141110"/>
+    <rect x="-9" y="-79" width="18" height="4.8" fill="#141110"/>
+  </g>
+</svg>
