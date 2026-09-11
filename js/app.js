@@ -1,32 +1,72 @@
 (function(){
   const grid = document.getElementById('cardGrid');
   const tabsEl = document.getElementById('cityTabs');
+  const citySelect = document.getElementById('citySelect');
+  const typeSelect = document.getElementById('typeSelect');
   const searchInput = document.getElementById('searchInput');
   const resultsBar = document.getElementById('resultsBar');
   const emptyState = document.getElementById('emptyState');
   const overlay = document.getElementById('overlay');
   const detailPanel = document.getElementById('detailPanel');
   const statTotal = document.getElementById('statTotal');
+  const statTowns = document.getElementById('statTowns');
 
+  let activeRegion = 'All';
   let activeCity = 'All';
+  let activeType = 'All types';
   let query = '';
 
   statTotal.textContent = CHURCHES.length;
+  if (statTowns) {
+    statTowns.textContent = new Set(CHURCHES.map(c => c.city)).size;
+  }
 
-  // --- build city tabs ---
-  CITIES.forEach(city => {
+  // --- build region tabs ---
+  REGIONS.forEach(region => {
     const btn = document.createElement('button');
-    btn.className = 'tab' + (city === activeCity ? ' active' : '');
-    btn.textContent = city === 'All' ? 'All cities' : city;
+    btn.className = 'tab' + (region === activeRegion ? ' active' : '');
+    btn.textContent = region === 'All' ? 'All regions' : region;
     btn.setAttribute('role', 'tab');
     btn.addEventListener('click', () => {
-      activeCity = city;
+      activeRegion = region;
+      activeCity = 'All';
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
+      populateCitySelect();
       render();
     });
     tabsEl.appendChild(btn);
   });
+
+  function populateCitySelect(){
+    if (!citySelect) return;
+    const cities = Array.from(new Set(
+      CHURCHES.filter(c => activeRegion === 'All' || c.region === activeRegion).map(c => c.city)
+    )).sort();
+    citySelect.innerHTML = '<option value="All">All towns/cities</option>' +
+      cities.map(c => `<option value="${c}">${c}</option>`).join('');
+    citySelect.value = 'All';
+  }
+
+  function populateTypeSelect(){
+    if (!typeSelect) return;
+    typeSelect.innerHTML = TYPES.map(t => `<option value="${t}">${t}</option>`).join('');
+    typeSelect.value = 'All types';
+  }
+
+  if (citySelect) {
+    citySelect.addEventListener('change', (e) => {
+      activeCity = e.target.value;
+      render();
+    });
+  }
+
+  if (typeSelect) {
+    typeSelect.addEventListener('change', (e) => {
+      activeType = e.target.value;
+      render();
+    });
+  }
 
   searchInput.addEventListener('input', (e) => {
     query = e.target.value.trim().toLowerCase();
@@ -36,8 +76,9 @@
   const pinIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 7 12 8 12s8-6.6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>';
 
   function matches(c){
-    const cityOk = activeCity === 'All' || c.city === activeCity;
-    if(!cityOk) return false;
+    if(activeRegion !== 'All' && c.region !== activeRegion) return false;
+    if(activeCity !== 'All' && c.city !== activeCity) return false;
+    if(activeType !== 'All types' && c.type !== activeType) return false;
     if(!query) return true;
     const hay = [c.name, c.patron, c.barangay, c.city, c.type].filter(Boolean).join(' ').toLowerCase();
     return hay.includes(query);
@@ -58,7 +99,11 @@
   function render(){
     const results = CHURCHES.filter(matches);
     grid.innerHTML = results.map(cardHTML).join('');
-    resultsBar.innerHTML = `Showing <strong>${results.length}</strong> of ${CHURCHES.length} churches${activeCity !== 'All' ? ' in <strong>' + activeCity + '</strong>' : ''}${query ? ` matching “${query}”` : ''}.`;
+    const scopeBits = [];
+    if(activeRegion !== 'All') scopeBits.push(activeRegion);
+    if(activeCity !== 'All') scopeBits.push(activeCity);
+    if(activeType !== 'All types') scopeBits.push(activeType + 's');
+    resultsBar.innerHTML = `Showing <strong>${results.length}</strong> of ${CHURCHES.length} churches${scopeBits.length ? ' in <strong>' + scopeBits.join(' — ') + '</strong>' : ''}${query ? ` matching "${query}"` : ''}.`;
     emptyState.style.display = results.length ? 'none' : 'block';
 
     grid.querySelectorAll('.card').forEach(card => {
@@ -92,7 +137,7 @@
       ${c.patron ? `<p class="patron">Patron: ${c.patron}</p>` : ''}
       <dl>
         ${field('Barangay', c.barangay)}
-        ${field('City', c.city)}
+        ${field('City/Town', c.city)}
         ${field('Address', c.address)}
         ${field('Vicariate', c.vicariate)}
         ${field('Priest', c.priest, 'Assignment being verified')}
@@ -118,5 +163,7 @@
   overlay.addEventListener('click', (e) => { if(e.target === overlay) closeDetail(); });
   document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDetail(); });
 
+  populateCitySelect();
+  populateTypeSelect();
   render();
 })();

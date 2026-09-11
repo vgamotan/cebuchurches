@@ -126,6 +126,18 @@ p{ margin: 0 0 1em; }
 .tab.active{ background: var(--gold); border-color: var(--gold); color: var(--ink); }
 .tab:hover:not(.active){ border-color: var(--gold); color: var(--gold); }
 
+#citySelect, #typeSelect{
+  padding: 10px 14px;
+  border-radius: var(--radius-s);
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  font-family:'Work Sans',sans-serif;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+
 /* ---------- results meta ---------- */
 .results-bar{ padding: 20px 0 4px; color:#5b5348; font-size:.92rem; }
 .results-bar strong{ color: var(--ink); }

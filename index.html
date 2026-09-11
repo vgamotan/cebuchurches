@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cebu Churches — Parish &amp; Mass Schedule Directory</title>
-<meta name="description" content="Find Catholic churches, parishes, and shrines across Metro Cebu — locations, priests, Facebook pages, and Mass schedules in one place.">
+<meta name="description" content="Find Catholic churches, parishes, and shrines across the Archdiocese of Cebu — locations, priests, Facebook pages, and Mass schedules in one place.">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -31,10 +31,10 @@
   <div class="container hero-inner">
     <div>
       <h1>Every parish, in one place —<br><em>sugbo simbahan.</em></h1>
-      <p class="lede">A growing directory of Catholic churches across Cebu — where they are, who serves them, and when Mass is said. Phase 1 covers Metro Cebu: Cebu City, Mandaue City, and Lapu-Lapu City.</p>
+      <p class="lede">A growing directory of Catholic churches across Cebu — where they are, who serves them, and when Mass is said. Now covering the entire Archdiocese of Cebu: Metro Cebu, South, Southwest, North, and the Camotes &amp; Bantayan Islands.</p>
       <div class="hero-stats">
         <div><strong id="statTotal">0</strong><span>Churches listed</span></div>
-        <div><strong>3</strong><span>Cities, Phase 1</span></div>
+        <div><strong id="statTowns">0</strong><span>Towns &amp; cities</span></div>
         <div><strong>1595</strong><span>Faith since</span></div>
       </div>
     </div>
@@ -45,7 +45,9 @@
 <div class="finder" id="directory">
   <div class="container">
     <input type="search" id="searchInput" placeholder="Search by church name, patron saint, or barangay…" aria-label="Search churches">
-    <div class="tabs" id="cityTabs" role="tablist" aria-label="Filter by city"></div>
+    <div class="tabs" id="cityTabs" role="tablist" aria-label="Filter by region"></div>
+    <select id="citySelect" aria-label="Filter by specific town or city"></select>
+    <select id="typeSelect" aria-label="Filter by church type"></select>
   </div>
 </div>
 
@@ -63,7 +65,7 @@
     <div>
       <h2>About this directory</h2>
       <p>Cebu Churches is being built as a free public reference for parishioners, visitors, and pilgrims — a single place to look up a church's location, its assigned priest, its official Facebook page, and its Mass schedule, instead of hunting across dozens of scattered posts and outdated blogs.</p>
-      <p>This is <strong>Phase 1</strong>: the parishes, shrines, and chapels of Cebu City, Mandaue City, and Lapu-Lapu City. Later phases will extend coverage to the rest of Cebu Province — Talisay, Naga, Carcar, the northern towns, Bantayan, and Camotes.</p>
+      <p>This directory now covers the <strong>entire Archdiocese of Cebu</strong>: Metro Cebu (Cebu City, Mandaue, Lapu-Lapu), South Cebu (Talisay down to Santander), Southwest Cebu (Alcantara around to Barili and Toledo City), North Cebu (Consolacion up to Tabuelan), and the Camotes &amp; Bantayan Islands.</p>
     </div>
     <div>
       <h2 id="submit">Help us keep it accurate</h2>
