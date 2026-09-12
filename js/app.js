@@ -87,6 +87,7 @@
   function cardHTML(c){
     return `
       <article class="card" data-type="${c.type}" tabindex="0" data-id="${c.id}">
+        ${c.photo ? `<div class="card-photo"><img src="${c.photo.url}" alt="${c.name}" loading="lazy"></div>` : ''}
         <div class="badge-row">
           <span class="type-badge">${c.type}</span>
         </div>
@@ -170,6 +171,7 @@
     if(!c) return;
     detailPanel.innerHTML = `
       <button class="close-btn" aria-label="Close">&times;</button>
+      ${c.photo ? `<div class="detail-photo"><img src="${c.photo.url}" alt="${c.name}"><span class="detail-photo-credit">Photo: ${c.photo.credit}</span></div>` : ''}
       <span class="type-badge">${c.type}</span>
       <h2 id="detailName">${c.name}</h2>
       ${c.patron ? `<p class="patron">Patron: ${c.patron}</p>` : ''}

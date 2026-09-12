@@ -30,6 +30,10 @@ const CHURCHES = [
       { day: "Saturday", times: "6:00, 7:00 (St. Joseph Chapel), 9:00 AM · 4:00 PM · 5:30 PM Anticipated (FB Live)" }
     ],
     notes: "The mother church of the Archdiocese of Cebu, seat of the Archbishop.",
+    photo: {
+      url: "https://commons.wikimedia.org/wiki/Special:FilePath/Cebu_Metropolitan_Cathedral_front_view_Cebu_City.JPG?width=640",
+      credit: "Nickrds09, CC BY-SA 3.0, via Wikimedia Commons"
+    },
     featured: true
   },
   {
@@ -52,6 +56,10 @@ const CHURCHES = [
       { day: "Saturday", times: "6:00, 7:00, 8:00 (Live) AM · 12:15 PM · 5:30 PM Anticipated" }
     ],
     notes: "Home of the oldest Catholic relic in the Philippines; centerpiece of the annual Sinulog festival. Confession Tue–Thu & Sat 4:00–5:20 PM, Fri 8AM–12NN & 3–7PM.",
+    photo: {
+      url: "https://commons.wikimedia.org/wiki/Special:FilePath/Basilica_Minore_del_Santo_Ni%C3%B1o_de_Cebu_facade_%28Osme%C3%B1a_Boulevard%2C_Cebu_City%3B_01-14-2023%29.jpg?width=640",
+      credit: "Patrickroque01, public domain (pre-1972 Philippine architecture), via Wikimedia Commons"
+    },
     featured: true
   },
   {
@@ -208,14 +216,14 @@ const CHURCHES = [
   { id: "sc-carcar-sanisidro-calidngan", name: "San Isidro Parish", patron: "San Isidro Labrador", type: "Parish", city: "Carcar City", barangay: "Calidngan", address: "Calidngan, Carcar City, Cebu 6019", vicariate: "Vicariate of St. Catherine of Alexandria", priest: "Rev. Fr. Camilo Sestoso", phone: null, facebook: null, website: null, schedule: null, notes: "Established 1958. Feast: May 15." },
 
   // --- Sibonga ---
-  { id: "sc-sibonga-simala", name: "Our Lady of Divine Grace Parish (Simala Shrine)", patron: "Our Lady of Divine Grace / Birhen sa Simala", type: "Shrine", city: "Sibonga", barangay: "Lindogon (Simala)", address: "Simala, Sibonga, Cebu 6020", vicariate: "Vicariate of San Antonio de Padua", priest: "Rev. Fr. Arnel Cipat", phone: null, facebook: null, website: null, schedule: null, notes: "One of the most-visited pilgrimage sites in the Philippines — the castle-like Marian shrine widely known as \"Simala.\" Established 1946. Feast: June 7." },
+  { id: "sc-sibonga-simala", name: "Our Lady of Divine Grace Parish (Simala Shrine)", patron: "Our Lady of Divine Grace / Birhen sa Simala", type: "Shrine", city: "Sibonga", barangay: "Lindogon (Simala)", address: "Simala, Sibonga, Cebu 6020", vicariate: "Vicariate of San Antonio de Padua", priest: "Rev. Fr. Arnel Cipat", phone: null, facebook: null, website: null, schedule: null, notes: "One of the most-visited pilgrimage sites in the Philippines — the castle-like Marian shrine widely known as \"Simala.\" Established 1946. Feast: June 7.", photo: { url: "https://commons.wikimedia.org/wiki/Special:FilePath/Simala_Parish_Church.jpg?width=640", credit: "Jennifer Bauzon, CC BY-SA 4.0, via Wikimedia Commons" } },
   { id: "sc-sibonga-pillar", name: "Our Lady of the Pillar Parish", patron: "Our Lady of the Pillar", type: "Parish", city: "Sibonga", barangay: "Poblacion", address: "Sibonga, Cebu 6020", vicariate: "Vicariate of San Antonio de Padua", priest: "Rev. Fr. Agustin Abella", phone: "(032) 486-9532 / 486-9059", facebook: null, website: null, schedule: null, notes: "Established 1830, the town's main parish church. Feast: October 12." },
 
   // --- Argao ---
   { id: "sc-argao-stotomas-talaga", name: "Sto. Tomas de Villanueva Parish", patron: "Sto. Tomás de Villanueva", type: "Parish", city: "Argao", barangay: "Talaga", address: "Talaga, Argao, Cebu 6021", vicariate: "Vicariate of San Antonio de Padua", priest: "Rev. Fr. Joseph Gabriente", phone: "(032) 485-6039", facebook: null, website: null, schedule: null, notes: "Established 1921. Feast: September 22." },
   { id: "sc-argao-immaculateconception-colawin", name: "Our Lady of the Immaculate Conception Parish", patron: "Our Lady of the Immaculate Conception", type: "Parish", city: "Argao", barangay: "Colawin", address: "Colawin, Argao, Cebu 6021", vicariate: "Vicariate of San Antonio de Padua", priest: "Rev. Fr. Lyle Carungay", phone: null, facebook: null, website: null, schedule: null, notes: "Established 1946. Feast: December 8." },
   { id: "sc-argao-sanisidro-cansuje", name: "Parroquia de San Isidro Labrador", patron: "San Isidro Labrador", type: "Parish", city: "Argao", barangay: "Cansuje", address: "Cansuje, Argao, Cebu 6021", vicariate: "Vicariate of San Antonio de Padua", priest: "Rev. Fr. Dindo Yosores", phone: null, facebook: null, website: null, schedule: null, notes: null },
-  { id: "sc-argao-stmichael-poblacion", name: "St. Michael the Archangel Parish (Argao Church)", patron: "St. Michael the Archangel", type: "Parish", city: "Argao", barangay: "Poblacion", address: "Poblacion, Argao, Cebu 6021", vicariate: "Vicariate of San Antonio de Padua", priest: null, phone: null, facebook: null, website: null, schedule: null, notes: "One of Cebu's grand baroque coral-stone churches, a National Cultural Treasure. Priest assignment being verified — not separately listed in our source alongside the other Argao parishes." },
+  { id: "sc-argao-stmichael-poblacion", name: "St. Michael the Archangel Parish (Argao Church)", patron: "St. Michael the Archangel", type: "Parish", city: "Argao", barangay: "Poblacion", address: "Poblacion, Argao, Cebu 6021", vicariate: "Vicariate of San Antonio de Padua", priest: null, phone: null, facebook: null, website: null, schedule: null, notes: "One of Cebu's grand baroque coral-stone churches, a National Cultural Treasure. Priest assignment being verified — not separately listed in our source alongside the other Argao parishes.", photo: { url: "https://commons.wikimedia.org/wiki/Special:FilePath/Argao_Church.jpg?width=640", credit: "Suzelfaith, public domain (pre-1972 Philippine architecture), via Wikimedia Commons" } },
 
   // --- Dalaguete ---
   { id: "sc-dalaguete-stamonica-kawayan", name: "Sta. Monica Parish", patron: "St. Monica", type: "Parish", city: "Dalaguete", barangay: "Kawayan", address: "Kawayan, Dalaguete, Cebu 6022", vicariate: "Vicariate of San Guillermo de Aquitania", priest: "Rev. Fr. Bengie Herrera", phone: "(032) 484-0079", facebook: null, website: null, schedule: null, notes: "Established 1952. Feast: May 4." },
@@ -227,7 +235,7 @@ const CHURCHES = [
   { id: "sc-alcoy-sanisidro", name: "San Isidro Labrador Parish", patron: "San Isidro Labrador", type: "Parish", city: "Alcoy", barangay: "Poblacion", address: "Alcoy, Cebu 6023", vicariate: "Vicariate of San Guillermo de Aquitania", priest: "Rev. Fr. Villy Jean Cortes", phone: null, facebook: null, website: null, schedule: null, notes: "Listed alongside Sta. Rosa de Lima Parish under the same 1890 founding date in our source; the two may reflect a parish division worth confirming locally." },
 
   // --- Boljoon ---
-  { id: "sc-boljoon-patrocinio", name: "Nuestra Señora del Patrocinio de Maria Church", patron: "Our Lady of Patronage (Patrocinio de Maria)", type: "Parish", city: "Boljoon", barangay: "Poblacion", address: "Boljoon, Cebu 6024", vicariate: "Vicariate of St. John Mary Vianney", priest: "Rev. Msgr. Arturo Navales", phone: "(032) 466-0467 / 482-9141", facebook: null, website: null, schedule: null, notes: "Established 1606; a National Cultural Treasure and one of the oldest, most intact Spanish-era church complexes in the Philippines. Feast: 2nd Saturday of November." },
+  { id: "sc-boljoon-patrocinio", name: "Nuestra Señora del Patrocinio de Maria Church", patron: "Our Lady of Patronage (Patrocinio de Maria)", type: "Parish", city: "Boljoon", barangay: "Poblacion", address: "Boljoon, Cebu 6024", vicariate: "Vicariate of St. John Mary Vianney", priest: "Rev. Msgr. Arturo Navales", phone: "(032) 466-0467 / 482-9141", facebook: null, website: null, schedule: null, notes: "Established 1606; a National Cultural Treasure and one of the oldest, most intact Spanish-era church complexes in the Philippines. Feast: 2nd Saturday of November.", photo: { url: "https://commons.wikimedia.org/wiki/Special:FilePath/Boljoon_Church%2C_Cebu.jpg?width=640", credit: "Adamdaley, CC BY-SA 4.0, via Wikimedia Commons" } },
 
   // --- Oslob ---
   { id: "sc-oslob-stjoseph", name: "St. Joseph the Carpenter Parish (Oslob Church)", patron: "St. Joseph the Carpenter", type: "Parish", city: "Oslob", barangay: "Nueva Caceres", address: "Nueva Caceres, Oslob, Cebu 6025", vicariate: "Vicariate of St. John Mary Vianney", priest: "Rev. Fr. Jose Arniel Mante", phone: "(032) 515-1526", facebook: null, website: null, schedule: null, notes: "Established 1877. Feast: May 1. The old coral-stone church near the cuartel ruins is a major stop for visitors heading to Oslob's whale shark watching area." },
