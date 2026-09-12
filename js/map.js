@@ -2,7 +2,6 @@
   const mapEl = document.getElementById('cebuMap');
   if(!mapEl || typeof L === 'undefined') return;
 
-  const panel = document.getElementById('mapSidePanel');
   const panelTitle = document.getElementById('mapPanelTitle');
   const panelList = document.getElementById('mapPanelList');
   const panelHint = document.getElementById('mapPanelHint');
@@ -20,20 +19,24 @@
     attributionControl: true
   }).setView([10.55, 123.85], 8);
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  // Plain OpenStreetMap tiles — no API key required, unlike CARTO's
+  // basemap endpoints which now gate anonymous access.
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 13,
     minZoom: 8
   }).addTo(map);
 
+  const DEFAULT_STYLE = { weight: 1.5, fillOpacity: 0.82 };
+  const ACTIVE_STYLE = { weight: 3, fillOpacity: 1 };
+
   let activeMarker = null;
-  let lockedCity = null;
 
   function markerRadius(count){
     return Math.max(6, Math.min(16, 5 + Math.sqrt(count) * 2.6));
   }
 
-  function showCity(cityName, marker){
+  function showCity(cityName){
     const churches = (byCity[cityName] || []).slice().sort((a,b) => a.name.localeCompare(b.name));
     panelTitle.textContent = cityName;
     panelHint.style.display = 'none';
@@ -56,11 +59,16 @@
     });
   }
 
-  function resetPanel(){
-    if(lockedCity) return; // a click has locked the panel; leave it be
-    panelTitle.textContent = 'Hover or tap a town';
-    panelHint.style.display = 'block';
-    panelList.innerHTML = '';
+  // Selecting a town — used for both hover and click/tap. The side
+  // panel and the highlighted marker persist until a *different* town
+  // is hovered or tapped; moving the mouse away does nothing on its
+  // own, so the list stays put long enough to actually read and click.
+  function selectCity(cityName, marker){
+    if(activeMarker === marker) return;
+    if(activeMarker) activeMarker.setStyle(DEFAULT_STYLE);
+    activeMarker = marker;
+    marker.setStyle(ACTIVE_STYLE);
+    showCity(cityName);
   }
 
   Object.keys(CITY_COORDS).forEach(cityName => {
@@ -68,40 +76,16 @@
     const region = churches.length ? churches[0].region : null;
     const color = REGION_COLORS[region] || '#171412';
 
-    const marker = L.circleMarker(CITY_COORDS[cityName], {
-      radius: markerRadius(churches.length),
+    const marker = L.circleMarker(CITY_COORDS[cityName], Object.assign({
       color: '#171412',
-      weight: 1.5,
-      fillColor: color,
-      fillOpacity: 0.82
-    }).addTo(map);
+      fillColor: color
+    }, DEFAULT_STYLE, { radius: markerRadius(churches.length) })).addTo(map);
 
     marker.bindTooltip(`${cityName} (${churches.length})`, { direction: 'top', offset: [0, -4] });
 
-    marker.on('mouseover', () => {
-      marker.setStyle({ weight: 3, fillOpacity: 1 });
-      if(!lockedCity) showCity(cityName, marker);
-    });
-    marker.on('mouseout', () => {
-      if(lockedCity !== cityName) marker.setStyle({ weight: 1.5, fillOpacity: 0.82 });
-      if(!lockedCity) resetPanel();
-    });
-    marker.on('click', () => {
-      if(activeMarker && activeMarker !== marker) activeMarker.setStyle({ weight: 1.5, fillOpacity: 0.82 });
-      lockedCity = cityName;
-      activeMarker = marker;
-      marker.setStyle({ weight: 3, fillOpacity: 1 });
-      showCity(cityName, marker);
-    });
+    marker.on('mouseover', () => selectCity(cityName, marker));
+    marker.on('click', () => selectCity(cityName, marker));
+    // Deliberately no 'mouseout' handler — the panel and highlighted
+    // marker are meant to persist until another town is hovered/tapped.
   });
-
-  // Clicking the map background (not a marker) unlocks the panel.
-  map.on('click', () => {
-    lockedCity = null;
-    if(activeMarker) activeMarker.setStyle({ weight: 1.5, fillOpacity: 0.82 });
-    activeMarker = null;
-    resetPanel();
-  });
-
-  resetPanel();
 })();

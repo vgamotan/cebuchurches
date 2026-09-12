@@ -92,9 +92,43 @@
       <p>This directory now covers the <strong>entire Archdiocese of Cebu</strong>: Metro Cebu (Cebu City, Mandaue, Lapu-Lapu), South Cebu (Talisay down to Santander), Southwest Cebu (Alcantara around to Barili and Toledo City), North Cebu (Consolacion up to Tabuelan), and the Camotes &amp; Bantayan Islands.</p>
     </div>
     <div>
-      <h2 id="submit">Help us keep it accurate</h2>
+      <h2 id="submit">Submit a correction</h2>
       <p>Parish details — especially the assigned priest, Facebook page, and Mass times — change more often than any directory can track alone. Fields marked <span class="unconfirmed" style="font-style:italic;color:#9a8f7b;">"being verified"</span> are ones we haven't independently confirmed yet.</p>
-      <p>If you're a parish secretary, priest, or parishioner and can help confirm or correct a listing, we'd welcome it — this directory is meant to be maintained with the community it serves, not built once and left to go stale.</p>
+      <p>Spot something outdated or wrong? Fill this in and it'll open your email app with everything already filled out — just hit send from there.</p>
+      <form id="correctionForm" class="correction-form">
+        <label for="corChurch">Church or listing</label>
+        <input type="text" id="corChurch" list="churchDatalist" placeholder="Start typing a church name…" autocomplete="off">
+        <datalist id="churchDatalist"></datalist>
+
+        <label for="corType">Type of correction</label>
+        <select id="corType">
+          <option>Priest assignment</option>
+          <option>Mass schedule</option>
+          <option>Facebook page / website</option>
+          <option>Phone number</option>
+          <option>Address / location</option>
+          <option>Missing church (not yet listed)</option>
+          <option>Other</option>
+        </select>
+
+        <label for="corDetails">Details <span class="req">*</span></label>
+        <textarea id="corDetails" rows="4" placeholder="What should this say instead?" required></textarea>
+
+        <div class="cor-row">
+          <div>
+            <label for="corName">Your name (optional)</label>
+            <input type="text" id="corName" placeholder="Optional">
+          </div>
+          <div>
+            <label for="corContact">Contact info (optional)</label>
+            <input type="text" id="corContact" placeholder="Email or phone, if you'd like a reply">
+          </div>
+        </div>
+
+        <button type="submit" class="cor-submit">Submit correction</button>
+        <p class="cor-status" id="corStatus"></p>
+        <button type="button" id="corCopyBtn" class="cor-copy-btn" style="display:none;">copy the email address instead</button>
+      </form>
     </div>
   </div>
 </section>
@@ -115,6 +149,7 @@
 <script src="js/data.js"></script>
 <script src="js/cebu-towns.js"></script>
 <script src="js/app.js"></script>
+<script src="js/correction.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="js/map.js"></script>
 </body>
