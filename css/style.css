@@ -103,6 +103,9 @@ p{ margin: 0 0 1em; }
   border-radius: var(--radius-s);
   border: 2px solid var(--ink);
   background: #eef1e9;
+  isolation: isolate; /* contains Leaflet's internal z-index stacking
+                         (its zoom controls/panes go up to z-index:1000)
+                         so it can never render above the modal overlay */
 }
 .map-panel{
   border: 1px solid var(--line);
@@ -226,7 +229,7 @@ p{ margin: 0 0 1em; }
 .overlay{
   position:fixed; inset:0; background: rgba(23,20,18,.62);
   display:none; align-items:flex-start; justify-content:center;
-  padding: 40px 16px; overflow-y:auto; z-index: 100;
+  padding: 40px 16px; overflow-y:auto; z-index: 10000;
 }
 .overlay.open{ display:flex; }
 .detail{
@@ -263,6 +266,14 @@ p{ margin: 0 0 1em; }
 }
 .detail .links a.secondary{ background:#fff; color: var(--ink); border:1.5px solid var(--ink); }
 .detail .notes-box{ background:#f6f1e3; border-left:3px solid var(--gold-deep); padding:10px 14px; font-size:.9rem; margin-top:14px; }
+.detail-correct-link{
+  display:block; margin-top:18px; padding-top:14px;
+  background:none; border:none; border-top:1px dashed var(--line);
+  color: var(--teal); text-decoration:underline; cursor:pointer;
+  font-family:'Work Sans',sans-serif; font-size:.88rem; font-weight:600;
+  width:100%; text-align:left;
+}
+.detail-correct-link:hover{ color: var(--red-deep); }
 
 /* ---------- about / footer ---------- */
 .section{ padding: 50px 0; }

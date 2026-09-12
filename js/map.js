@@ -84,7 +84,10 @@
     marker.bindTooltip(`${cityName} (${churches.length})`, { direction: 'top', offset: [0, -4] });
 
     marker.on('mouseover', () => selectCity(cityName, marker));
-    marker.on('click', () => selectCity(cityName, marker));
+    marker.on('click', (e) => {
+      L.DomEvent.stopPropagation(e);
+      selectCity(cityName, marker);
+    });
     // Deliberately no 'mouseout' handler — the panel and highlighted
     // marker are meant to persist until another town is hovered/tapped.
   });

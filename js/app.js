@@ -127,6 +127,44 @@
     return `<table class="schedule-table">${rows}</table>`;
   }
 
+  // Same obfuscation approach as js/correction.js: the address is
+  // assembled at click time, never written out in the page source.
+  function correctionsEmail(){
+    return ['verge.gamotan', 'gmail.com'].join('@');
+  }
+
+  function scheduleText(schedule){
+    if(!schedule || !schedule.length) return 'Being verified';
+    return schedule.map(s => `${s.day}: ${s.times}`).join('; ');
+  }
+
+  function buildChurchCorrectionMailto(c){
+    const subject = `${c.name} - Correction`;
+    const lines = [
+      'Current listing details:',
+      `Church: ${c.name}`,
+      `Patron: ${c.patron || '—'}`,
+      `Type: ${c.type}`,
+      `City/Town: ${c.city}`,
+      `Barangay: ${c.barangay || '—'}`,
+      `Address: ${c.address || '—'}`,
+      `Vicariate: ${c.vicariate || '—'}`,
+      `Priest: ${c.priest || 'Being verified'}`,
+      `Phone: ${c.phone || '—'}`,
+      `Facebook: ${c.facebook || '—'}`,
+      `Website: ${c.website || '—'}`,
+      `Mass schedule: ${scheduleText(c.schedule)}`,
+      `Notes: ${c.notes || '—'}`,
+      '',
+      '---',
+      'Which of the details above needs to be corrected, and what should it say instead?',
+      '(Type your answer below)',
+      ''
+    ];
+    const body = lines.join('\n');
+    return `mailto:${correctionsEmail()}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
   function openDetail(id){
     const c = CHURCHES.find(x => x.id === id);
     if(!c) return;
@@ -151,9 +189,13 @@
         ${!c.facebook && !c.website ? `<span class="unconfirmed">No official online page confirmed yet</span>` : ''}
       </div>
       ${c.notes ? `<div class="notes-box">${c.notes}</div>` : ''}
+      <button type="button" class="detail-correct-link" id="detailCorrectBtn">Submit a correction for this listing →</button>
     `;
     overlay.classList.add('open');
     detailPanel.querySelector('.close-btn').addEventListener('click', closeDetail);
+    detailPanel.querySelector('#detailCorrectBtn').addEventListener('click', () => {
+      window.location.href = buildChurchCorrectionMailto(c);
+    });
   }
 
   function closeDetail(){
