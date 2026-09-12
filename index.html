@@ -6,6 +6,7 @@
 <title>Cebu Churches — Parish &amp; Mass Schedule Directory</title>
 <meta name="description" content="Find Catholic churches, parishes, and shrines across the Archdiocese of Cebu — locations, priests, Facebook pages, and Mass schedules in one place.">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,6 +21,7 @@
       </span>
     </a>
     <nav class="main-nav">
+      <a href="#map">Map</a>
       <a href="#directory">Directory</a>
       <a href="#about">About this project</a>
       <a href="#submit">Submit a correction</a>
@@ -39,6 +41,28 @@
       </div>
     </div>
     <div class="hero-seal"><img src="assets/logo.svg" alt=""></div>
+  </div>
+</section>
+
+<section class="map-section" id="map">
+  <div class="container">
+    <h2>Browse by town</h2>
+    <p class="map-intro">Hover a marker on desktop, or tap it on mobile, to see that town's churches. Marker size shows how many churches are listed there.</p>
+    <div class="map-layout">
+      <div id="cebuMap"></div>
+      <aside class="map-panel" id="mapSidePanel">
+        <h3 id="mapPanelTitle">Hover or tap a town</h3>
+        <p class="map-panel-hint" id="mapPanelHint">Every town and city in the directory has a marker on the map — start exploring by hovering or tapping one.</p>
+        <ul class="map-panel-list" id="mapPanelList"></ul>
+      </aside>
+    </div>
+    <div class="map-legend">
+      <span><i style="background:#A6192E"></i> Metro Cebu</span>
+      <span><i style="background:#D99A00"></i> South Cebu</span>
+      <span><i style="background:#0E5C63"></i> Southwest Cebu</span>
+      <span><i style="background:#55682E"></i> North Cebu</span>
+      <span><i style="background:#2F6FB3"></i> Camotes &amp; Bantayan Islands</span>
+    </div>
   </div>
 </section>
 
@@ -89,6 +113,9 @@
 </div>
 
 <script src="js/data.js"></script>
+<script src="js/cebu-towns.js"></script>
 <script src="js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/map.js"></script>
 </body>
 </html>

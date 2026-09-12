@@ -93,6 +93,50 @@ p{ margin: 0 0 1em; }
 .hero-seal{ display:flex; justify-content:center; }
 .hero-seal img{ width: min(260px, 100%); filter: drop-shadow(0 12px 26px rgba(0,0,0,.45)); }
 
+/* ---------- map section ---------- */
+.map-section{ padding: 46px 0 40px; background: var(--paper); border-bottom: 1px solid var(--line); }
+.map-section h2{ font-size: 1.7rem; margin-bottom: .2em; }
+.map-intro{ color: #6b6153; max-width: 62ch; margin-bottom: 20px; }
+.map-layout{ display:grid; grid-template-columns: 1.7fr 1fr; gap: 20px; align-items:stretch; }
+#cebuMap{
+  height: 480px;
+  border-radius: var(--radius-s);
+  border: 2px solid var(--ink);
+  background: #eef1e9;
+}
+.map-panel{
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--red);
+  border-radius: var(--radius-s);
+  padding: 18px 18px 14px;
+  background: #fff;
+  display:flex; flex-direction:column;
+  max-height: 480px;
+  overflow-y: auto;
+}
+.map-panel h3{ font-size: 1.15rem; margin-bottom: .2em; }
+.map-panel-hint{ color:#9a8f7b; font-size:.88rem; }
+.map-panel-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+.map-panel-list .map-empty{ color:#9a8f7b; font-style:italic; font-size:.9rem; }
+.map-church-btn{
+  width:100%; text-align:left; background: var(--cream); border: 1px solid var(--line);
+  border-radius: var(--radius-s); padding: 8px 10px; cursor:pointer;
+  display:flex; flex-direction:column; gap:3px; font-family:'Work Sans',sans-serif;
+}
+.map-church-btn:hover{ border-color: var(--gold-deep); background:#fff; }
+.map-church-name{ font-weight:600; font-size:.92rem; color: var(--ink); }
+.map-church-brgy{ font-size:.78rem; color:#8a8072; }
+.map-legend{ display:flex; flex-wrap:wrap; gap:16px; margin-top:16px; font-size:.82rem; color:#5b5348; }
+.map-legend i{ display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:5px; vertical-align:-1px; }
+
+.leaflet-tooltip{ font-family:'Work Sans',sans-serif; font-size:.8rem; }
+
+@media (max-width: 860px){
+  .map-layout{ grid-template-columns: 1fr; }
+  #cebuMap{ height: 360px; }
+  .map-panel{ max-height: none; }
+}
+
 /* ---------- search / filter bar ---------- */
 .finder{
   background: var(--red);

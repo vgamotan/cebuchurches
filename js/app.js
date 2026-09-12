@@ -163,6 +163,10 @@
   overlay.addEventListener('click', (e) => { if(e.target === overlay) closeDetail(); });
   document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDetail(); });
 
+  // Exposed so js/map.js can open the same detail modal when a church
+  // is clicked from the map's side panel.
+  window.CebuChurchesOpenDetail = openDetail;
+
   populateCitySelect();
   populateTypeSelect();
   render();
